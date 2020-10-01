@@ -1,10 +1,14 @@
 <?php
-require_once "./libs/smarty/Smarty.class.php";
-function showHome(){
-    $smarty = new Smarty();
-  
-  
-    $smarty->display('templates/tasks.tpl'); // muestro el template 
+require_once "libs/smarty/Smarty.class.php";
+
+class controller{
+    function Home(){
+        $smarty = new Smarty();
+      
+      
+        $smarty->display('home.tpl'); // muestro el template 
+    }
 }
+
 
 ?>

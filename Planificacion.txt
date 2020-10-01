@@ -1,0 +1,39 @@
+Repuesto (id, nombre, vehiculo, id_categoria, precio) 
+
+1, paragolpe, ford falcon, 1 , 55,3
+2, cilindro, fiat duna, 2, 122.5
+3, parabrisa, ford focus, 1, 432
+4, extremo derecho, toyota hilux, 4, 1233
+5, pinito fragancia bebe recien nacido, todos, 3 , 99
+6, puerta derecha, fiat 147, 1, 33333
+
+Categoria (id_categoria, nombre, descripcion)
+
+1, chasis, ??
+2, motor, ??
+3, accesorios, ??
+4, tren_delantero, ??
+
+Productos / Admin
+
+Router -> ProductsController
+Products -> ShowProducts
+SearchOne -> ShowOne
+SearchByCategories -> ShowCategorie
+DeleteProduct -> DeleteProduct
+AddProduct -> AddProduct
+EditProduct -> EditProduct
+
+Categoria
+
+DeleteCategorie -> DeleteCategorie
+AddCategorie -> AddCategorie
+EditCategorie -> EditCategorie
+ShowCategories -> ShowCategories
+
+Users
+
+Login -> Verify
+LogOut -> ShowHome
+Register -> NewUser
+

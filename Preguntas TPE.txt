@@ -1,0 +1,14 @@
+tp4
+	ej5
+		c- ¿Cómo traigo la cantidad de películas por género? es a partir de 
+		el model a traves de un arr asosiativo? 
+
+		¿Se puede poner una url con 2 metodos?
+
+	Para que chucha 2 htmls?
+	SearchOne ¿Hay que generar otro template solo para mostrar esta columna?
+
+	Usuarios:
+			Es posible o es mala practica interconectar controllers?
+			 
+			

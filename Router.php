@@ -1,5 +1,6 @@
 <?php
     require_once 'RouterClass.php';
+    require_once 'Controller.php';
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -7,7 +8,7 @@
     $r = new Router();
 
     // rutas
-    $r->addRoute("home", "POST", "TasksController", "Home");
+    $r->addRoute("home", "POST", "Controller", "showHome");
 
     //Esto lo veo en TasksView
     $r->addRoute("insert", "POST", "TasksController", "InsertTask");
@@ -17,7 +18,7 @@
     $r->addRoute("edit/:ID", "GET", "TasksController", "EditTask");
 
     //Ruta por defecto.
-    $r->setDefaultRoute("TasksController", "Home");
+    $r->setDefaultRoute("Controller", "showHome");
 
     //Advance
     $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");

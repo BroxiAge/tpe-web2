@@ -1,0 +1,483 @@
+body {
+  padding-top: 110px;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, h2, h3{
+  color:brown;
+}
+
+.imagen{
+  width: 100%;
+  height: 100%;
+}
+
+/* barra de navegación */
+nav{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: black;
+  height: 110px;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  width: 100%;  
+}
+
+#boton-menu{
+  background-color: transparent;
+  border:none;
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
+#boton-menu img{
+  height: 25px;
+  width: 25px;
+
+}
+
+.ingreso{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  text-align: end;
+}
+
+.ingreso a{
+  font-size: 14px;
+  padding-right: 40px;
+}
+
+nav a{
+  color:white;
+  text-decoration: none;
+}
+
+.logo{
+  width: 75x;
+  height: 75px;
+  padding-left: 14px;
+  padding-bottom: 7px;
+}
+
+nav li a{
+  visibility: hidden;
+  color: white;
+}
+nav li{
+  list-style: none;
+  padding:10px;
+  padding-right: 30px;
+}
+/*"header"*/
+.banner{
+  width: 100%;
+  height: 100%;
+}
+
+/*Contenedores*/
+.contenedor-principal{
+  background-color: gray;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.contenedor-productos label{
+  display: block;
+  margin-bottom: 10px;
+}
+
+/*footer */
+
+footer{
+  flex-wrap: wrap;
+  display: flex;
+  background-color: black;
+}
+
+.logo-footer{
+  width: 0px;
+  visibility: hidden;
+}
+.datos-footer{
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content:space-between;
+  padding: 0 5%;
+}
+
+.datos-contacto{
+  width: 40%;
+}
+
+.datos-contacto p, .datos-contacto h3{
+  color:white;
+}
+
+.gmap{
+  width: 50%;
+}
+
+.gmap img {
+  width: 100%;
+}
+
+.sub-footer{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width:90% ;
+  background-color: gray;
+  padding: 0 5%;
+}
+#boton-eliminar-todo{
+  margin-top: 10px;
+}
+.contenedor-social{
+  display: flex;
+}
+
+.redes-sociales{
+  width: 30px;
+}
+
+.contenedor-logo-social{
+  border-radius: 200px;
+  background-color: brown;
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+
+
+footer h3{
+  width: 100%;
+  color:brown;
+}
+footer h4{
+  width: 100%;
+  border-bottom: 1px solid brown;
+  color: white;
+}
+footer p{
+  font-size: 10px;
+}
+
+
+.fondo-negro{
+  background-color: black;
+}
+.fondo-transparente{
+  background-color: transparent;
+}
+#contenedor-form-agregar-productos{
+  
+  width: 95%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+#contenedor-form-agregar-productos label{
+  display:block;
+}
+#contenedor-form-agregar-productos input{
+  width: 20%;
+  display:block;
+}
+#contenedor-form-agregar-productos button{
+  margin-top: 20px;
+}
+#contenedor-tabla-productos{
+  padding-top:20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+#contenedor-tabla-productos table, tr, td,thead{
+  border: 2px solid brown;
+  border-collapse: collapse;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+}
+#contenedor-tabla-productos thead{
+  background-color: black;
+  color: brown;
+  
+}
+
+  /*Quienes somos*/
+  .QSGlobal{
+    display:flex;
+    flex-wrap: wrap;
+    padding: 0 5%;
+    width: 90%;
+    
+}
+  .QSTexto{
+    width: 100%;
+    
+}
+  .QSImg{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Form container */
+
+.form-container{
+  margin: 0;
+  background-image: url("images/background-contacto.jpg");
+  background-size: cover;
+  padding:50px 20px;
+  align-items: flex-start;
+  
+}
+
+.form-container .formulario-contacto .div-form{
+  margin: 15px 0;
+}
+
+.form-container form{
+  align-items: flex-start;
+  display: block;
+  text-align: left;
+  
+}
+
+.form-container input{
+  background-color: transparent;
+  width: 90%;
+  height: 30px;
+  border: solid black 1px;
+  display: block;
+  font-size: 18px;
+  font-weight: 200;
+
+}
+
+.form-container textarea{
+  width: 90%;
+  background-color: transparent;
+  height: 150px;
+}
+.valor-captcha{
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 30px;
+  font-weight: 600;
+  color: red;
+  font-family: sans-serif;
+
+}
+.boton-verificar{
+  display: block;
+  margin-top: 20px;
+  width: 140px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color:gray;
+  border: none;
+}
+
+.form-container label{
+  display:block;
+  text-align: left;
+}
+
+.form-container textarea{
+  display: block;
+}
+
+.form-container span{
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.texto-bienvenida{
+  width: 90%;
+  padding: 5%;
+}
+
+.texto-bienvenida p{
+  font-size: medium;
+  font-weight: 500;
+  font-family: sans-serif;
+}
+.texto-bienvenida span{
+  font-weight: 600;
+  font-size: larger;
+}
+
+
+
+@media only screen and (min-width: 768px){
+  nav ul li a{
+    visibility: visible;
+    width: auto;
+    height: auto;
+  }
+  nav ul li button{
+    visibility: hidden;
+  }
+  nav ul li{
+    display: inline-block;
+  }
+  .texto-bienvenida p{
+    font-size: larger;
+    font-weight: 500;
+    font-family: sans-serif;
+  }
+  
+  .contenedor-logo-footer{
+    width: 10%;
+    padding: 20px 5%;
+  }
+  .contenedor-logo-footer img{
+    width: 80%;
+    visibility: visible;
+  }
+
+  .datos-footer{
+    width: 70%;
+  }
+
+  .gmap{
+    width: 30%;
+  }
+  /*Quienes somos*/
+
+  .QSTexto, .QSImg{
+    width: 40%;
+    margin: 5%;
+  }
+
+  .contenedor-productos{
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .contenedor-edicion{
+    width: 80%;
+  }
+
+  .contenedor-productos h1{
+    width: 100%;
+    text-align: center;
+  }
+
+  .contenedor-productos table{
+    width: 80%;
+  } 
+
+  .form-container{
+    margin: 0;
+    background-image: url("images/background-contacto.jpg");
+    background-size: cover;
+    padding:50px 0;
+    align-items: flex-start;
+    padding-left: 30%;
+  }
+ 
+  .form-container h2{
+    padding-left: 32px;
+  }
+  
+  .form-container span{
+    padding-left: 32px;
+  } 
+  
+  .form-container .formulario-contacto{
+    padding-left: 20px;
+  }
+  
+  .form-container .formulario-contacto .div-form{
+    margin: 15px;
+  }
+
+  .form-container form{
+    align-items: flex-start;
+    display: block;
+    text-align: left;
+    padding-left: 33.5%;
+  }
+
+  .form-container input{
+    background-color: transparent;
+    width: 50%;
+    height: 40px;
+    border: solid black 1px;
+    display: block;
+    font-size: 18px;
+    font-weight: 200;
+  }
+
+  .form-container textarea{
+    width: 50%;
+    background-color: transparent;
+    height: 150px;
+  }
+
+  .valor-captcha{
+    padding: 5px;
+    font-size: 30px;
+    font-weight: 600;
+    color: red;
+    font-family: sans-serif;
+    background-color: white;
+    border: solid black 1px;
+  }
+  .boton-verificar{
+    display: block;
+    margin-top: 20px;
+    width: 200px;
+    height: 80px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color:gray;
+    border: none;
+  }
+
+  .form-container label{
+    display:block;
+    text-align: left;
+  }
+
+  .form-container textarea{
+    display: block;
+  }
+
+  .form-container span{
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+/*clases de interacción*/
+
+.visible{
+  visibility: visible;
+  width: auto;
+}
+.oculto{
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.social-hover{
+  background-color: coral;
+}
+
+.link-hover{
+  color: brown;
+}

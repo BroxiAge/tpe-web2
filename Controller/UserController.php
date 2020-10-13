@@ -40,10 +40,10 @@ class UserController{
                 if (password_verify($pass, $userFromDB->password)){
 
                     session_start();
-                    $_SESSION["EMAIL"] = $userFromDB->email;
+                    $_SESSION["USER"] = $userFromDB->name;
                     $_SESSION['LAST_ACTIVITY'] = time();
 
-                    header("Location: ".BASE_URL."home");
+                    header("Location: ".BASE_URL."spares");
                 }else{
                     $this->view->ShowLogin("Contraseña incorrecta");
                 }
@@ -55,7 +55,11 @@ class UserController{
         }
     }
 
+
+
+
+
+
+
 }
-
-
 ?>

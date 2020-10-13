@@ -24,6 +24,11 @@
     
 </form>
 
+<ul>
+    <li></li>
+</ul>
+<a href=""></a>
+
 <table>
     <thead>
         <tr>
@@ -35,8 +40,56 @@
     </thead>
 </table>
 
+<a href="{BASE_URL}productos/add">Agregar</a>
+<a href="{BASE_URL}productos/delete">Eliminar</a>
+<a href="{BASE_URL}productos/edit">Editar</a>
+<section id="#contenedor-form-agregar-productos"></section>
+<span></span>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<a href="../tabla"></a>
+<input type="texta">
+<form action="add">
+    <label for=""></label>
+    <input type="text" name="input_name">
+    <input type="text" name="input_vehicle">
+    <select name="select_categorie" id="select_categorie">
+        <option value=1>Chasis</option> 
+        <option value=2>Motor</option> 
+        <option value=3>Accesorios</option> 
+        <option value=4>Tren delantero</option> 
+    </select>
+    <input type="number" name="input_price">
+    <button type="submit">Agregar</button>
+</form>
 
 
+<form action="verifyUser" method="POST">
+    <label for="user">Usuario</label>
+    <input type="text" name ="input_user">
+
+    <label for="pass">Password</label>
+    <input type="text" name="input_pass">
+
+    <button type="submit">Ingresar</button>
+
+</form>
 
 </body>
+
 </html>
+
+
+
+    <form action="verifyUser" method="post">
+                    <div class="form-group">
+                        <label for="user">Ususario</label>
+                        <input class="form-control" id="user" name="input_user" aria-describedby="emailHelp">
+                
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Password</label>
+                        <input type="password" class="form-control" id="pass" name="input_pass">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>

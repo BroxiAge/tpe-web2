@@ -7,12 +7,12 @@
 
             <link rel="stylesheet" type="text/css" href="./css/estilo.css">
 
-            <title>{$titulo_s}</title>
+            <title>{$title}</title>
             </head>
             <body>
                 <nav id = "nav">
                     <article class = "ingreso">
-                        <a href=""> Ingresar</a>
+                        <a href="{LOGOUT}"> Logout</a>
                     </article>
                     <article>
                         <img class ="logo" src="images/logo.png" alt="">
@@ -28,4 +28,4 @@
                         </li>
                     </ul>
                 </nav>
-                <h1>{$titulo_s}</h1>
+                <h1>{$title}</h1>

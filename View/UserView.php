@@ -20,7 +20,6 @@ class UserView{
         $smarty->display('templates/login.tpl'); // muestro el template 
     }
 
+
 }
-
-
 ?>

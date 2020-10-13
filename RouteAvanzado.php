@@ -1,9 +1,10 @@
 <?php
-    require_once 'Controller/TasksController.php';
-    require_once 'Controller/TasksAdvanceController.php';
+    require_once 'Controller/SpareController.php';
+    require_once 'Controller/CategoriesController.php';
     require_once 'Controller/UserController.php';
-    require_once 'Controller/TestController.php';
     require_once 'RouterClass.php';
+
+
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -13,28 +14,31 @@
 
     $r = new Router();
 
-    // rutas
-    $r->addRoute("home", "GET", "TasksController", "Home");
-    $r->addRoute("login", "GET", "UserController", "Login");
-    $r->addRoute("logout", "GET", "UserController", "Logout");
+    
+    $r->addRoute("spares", "GET", "SpareController", "Spares");
+    $r->addRoute("producto/:ID", "GET", "SpareController", "SpareDetail"); 
+    
+    $r->addRoute("edit", "POST", "SpareController", "EditSpare"); 
+    $r->addRoute("delete", "POST", "SpareController", "DeleteSpare"); 
 
+
+
+    $r->addRoute("categories", "GET", "CategoriesController", "Categories");
+    $r->addRoute("categories/:ID", "GET", "CategoriesController", "FilterByCategorie");
+    $r->addRoute("addCategorie", "POST", "CategoriesController", "AddCategorie");
+    $r->addRoute("deleteCategorie", "POST", "CategoriesController", "DeleteCategorie");
+    $r->addRoute("modifyCategorie", "POST", "CategoriesController", "ModifyCategorie");
+    
     $r->addRoute("verifyUser", "POST", "UserController", "VerifyUser");
-
-    $r->addRoute("mermelada", "GET", "TasksController", "Home");
-    //TEST
-    $r->addRoute("test", "GET", "TestController", "ShowText");
-    $r->addRoute("llenarForm", "POST", "TestController", "EditarForm");
-    $r->addRoute("tabla", "GET", "TestController", "MostrarTabla");
-
-    //Esto lo veo en TasksView
-    $r->addRoute("insert", "POST", "TasksController", "InsertTask");
-
-    $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
-    $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
-    $r->addRoute("edit/:ID", "GET", "TasksController", "EditTask");
+    $r->addRoute("logout", "GET", "UserController", "Logout");
+    
+    
+    
+    
+   
 
     //Ruta por defecto.
-    $r->setDefaultRoute("TasksController", "Home");
+    $r->setDefaultRoute("UserController", "Login");
 
     //Advance
     $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");

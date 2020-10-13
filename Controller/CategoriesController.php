@@ -19,13 +19,17 @@ class CategoriesController{
     }
 
     private function checkLoggedIn(){
+        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         session_start();
         
         if(!isset($_SESSION["USER"])){
             header("Location: ". LOGIN);
             die();
         }else{
-            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 10)) { 
+            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) { 
                 header("Location: ". LOGOUT);
                 die();
             } 
@@ -35,6 +39,7 @@ class CategoriesController{
     }
 
     function Categories(){
+        
         $this->checkLoggedIn();
         $user= $this->userModel->GetUser($_SESSION["USER"]);
         $categories = $this->model->getCategories();
@@ -54,11 +59,11 @@ class CategoriesController{
     
         $categorie_name = $_POST['input_categorie'];
         if ($categorie_name != ''){
-            $categorie_id = $this->model->getCategorie($categorie_name);
-            if (!isset($categorie_id)){
+            $categorie = $this->model->getCategorie($categorie_name);
+            if (!isset($categorie->name)){
                 $this->model->AddCategorie($categorie_name);
-                
             }
+            
         }
         $this->Categories();
     }

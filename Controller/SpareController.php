@@ -19,7 +19,9 @@ class SpareController{
     }
 
     private function checkLoggedIn(){
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         
         if(!isset($_SESSION["USER"])){
             header("Location: ". LOGIN);
@@ -67,7 +69,7 @@ class SpareController{
         if (($name != '') && ($vehicle!= '') && ($categorie!= '') && ($price!= '')){ //comprueba que no esten los campos vacíos.
             
             $algo = $this->model->getSpareByNameAndVehicle($name,$vehicle); //comprueba si existe en la db.
-            if($algo->name != $name){ //Se pregunta por el primer item, porque si devolvió de la db, es que existe.
+            if(!isset($algo->name )){ //Se pregunta por el primer item, porque si devolvió de la db, es que existe.
                 $this->model->InsertSpare($name,$vehicle,$categorie,$price,$description);  
             }
             else{

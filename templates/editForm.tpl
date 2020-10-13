@@ -6,10 +6,9 @@
     <label for="input_vehicle">Vehiculo:</label>
     <input type="text" name="input_vehicle">
     <select name="select_categorie" id="select_categorie">
-        <option value=1>Chasis</option> 
-        <option value=2>Motor</option> 
-        <option value=3>Accesorios</option> 
-        <option value=4>Tren delantero</option> 
+        {foreach from=$categorias item=categoria}
+            <option value={$categoria->id_categorie}>{$categoria->name}</option>              
+        {/foreach}
     </select>
     <label for="input_price">Precio:</label>
     <input type="number" name="input_price">

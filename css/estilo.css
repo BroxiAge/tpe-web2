@@ -4,6 +4,11 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.contenedor-edit-spares{
+  display:flex;
+  
+}
+
 h1, h2, h3{
   color:brown;
 }

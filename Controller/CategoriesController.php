@@ -23,8 +23,7 @@ class CategoriesController{
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        session_start();
-        
+
         if(!isset($_SESSION["USER"])){
             header("Location: ". LOGIN);
             die();
@@ -39,24 +38,36 @@ class CategoriesController{
     }
 
     function Categories(){
-        
-        $this->checkLoggedIn();
-        $user= $this->userModel->GetUser($_SESSION["USER"]);
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+        }else{
+            $user = $this->userModel->GetUser("invitado");
+        }
         $categories = $this->model->getCategories();
         $this->view->showCategories($categories, $user);
     }
 
     function FilterByCategorie($params = null){
-        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+        }else{
+            $user = $this->userModel->GetUser("invitado");
+        }
         $categorie_name = $params[':ID'];
         $categorie_id = $this->model->getCategorieId($categorie_name);
         $sparesByCategorie = $this->model->getSparesByCategorie($categorie_id);
-        $this->view->ShowSparesByCategorie($sparesByCategorie, $categorie_name);
+        $this->view->ShowSparesByCategorie($sparesByCategorie, $categorie_name, $user);
         
     }
 
     function AddCategorie(){
-    
+        
         $categorie_name = $_POST['input_categorie'];
         if ($categorie_name != ''){
             $categorie = $this->model->getCategorie($categorie_name);

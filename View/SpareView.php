@@ -13,6 +13,8 @@ class SpareView{
         $this->title = "Productos";
     }
 
+   
+
     function showTable($spares, $categories, $user){
         $smarty = new Smarty();
         $smarty->assign('title', $this->title);
@@ -23,20 +25,16 @@ class SpareView{
         $smarty->display('templates/spareTable.tpl');
     }
 
-    function ShowSpare($spare){
+    function ShowSpare($spare,$categories,$user){
         $smarty = new Smarty();
         $smarty->assign('title', $spare->name);
+        $smarty->assign('categories', $categories);
         $smarty->assign ('spare', $spare);
+        $smarty->assign ('user', $user);
             
         $smarty->display('templates/spare.tpl');
     }
 
-    function showTest($algo){
-        $smarty = new Smarty();
-        $smarty->assign('title', $this->title);
-        $smarty->assign ('algo', $algo);
-            
-        $smarty->display('templates/TestForm.tpl');
-    }
+
 }
 ?>

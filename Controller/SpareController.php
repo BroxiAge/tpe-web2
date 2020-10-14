@@ -36,11 +36,18 @@ class SpareController{
         }
     }
 
-
+    
     
     function Spares(){
-        $this->checkLoggedIn();
-        $user= $this->userModel->GetUser($_SESSION["USER"]);
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+        }else{
+            $user = $this->userModel->GetUser("invitado");
+        }
+        
         $repuestos = $this->model->getSpares();
         $categorias = $this->model->getCategories();
         $this->view->showTable($repuestos, $categorias,$user); 
@@ -50,11 +57,18 @@ class SpareController{
     }
     
     function SpareDetail($params = null){
-        $this->checkLoggedIn();
-        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+        }else{
+            $user = $this->userModel->GetUser("invitado");
+        }
         $repuesto_id = $params[':ID'];
         $repuesto = $this->model->getSpare($repuesto_id);
-        $this->view->ShowSpare($repuesto);
+        $categorias = $this->model->getCategories();
+        $this->view->ShowSpare($repuesto,$categorias,$user);
     }
     
     function EditSpare (){

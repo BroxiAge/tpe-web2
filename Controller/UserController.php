@@ -3,19 +3,25 @@
 require_once "./View/UserView.php";
 require_once "./Model/UserModel.php";
 
+
 class UserController{
 
     private $view;
     private $model;
+    private $userModel;
+ 
 
     function __construct(){
         $this->view = new UserView();
         $this->model = new UserModel();
-
+        $this->userModel = new UserModel();
     }
 
     function Login(){
-
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+      
         $this->view->ShowLogin();
 
     }
@@ -25,6 +31,24 @@ class UserController{
         session_destroy();
         header("Location: ".LOGIN);
 
+    }
+
+    function Home(){
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+        }else{
+            $user = $this->userModel->GetUser("invitado");
+        }
+        $this->view->showHome($user);
+    }
+
+    function Contacto(){
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+        }else{
+            $user = $this->userModel->GetUser("invitado");
+        }
+        $this->view->showContacto($user);
     }
 
     function VerifyUser(){
@@ -43,7 +67,7 @@ class UserController{
                     $_SESSION["USER"] = $userFromDB->name;
                     $_SESSION['LAST_ACTIVITY'] = time();
 
-                    header("Location: ".BASE_URL."spares");
+                    header("Location: ".BASE_URL."home");
                 }else{
                     $this->view->ShowLogin("Contraseña incorrecta");
                 }

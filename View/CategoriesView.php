@@ -22,10 +22,11 @@ class CategoriesView{
         $smarty->display('templates/categoriesTable.tpl');
     }
 
-    function ShowSparesByCategorie($sparesByCategorie, $categorie_title){
+    function ShowSparesByCategorie($sparesByCategorie, $categorie_title, $user){
         $smarty = new Smarty();
         $smarty->assign('title', $categorie_title);
         $smarty->assign('repuestos', $sparesByCategorie);
+        $smarty->assign ('user', $user);
 
         $smarty->display('templates/sparesTableByCategorie.tpl');
     }

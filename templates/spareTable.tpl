@@ -34,7 +34,10 @@
 
 {if $user->rol eq 1}
     {include file="editForm.tpl"}
-    {include file="deleteForm.tpl"}
+
+{/if}
+{if $user->rol eq -1}
+    invitado
 {/if}
 {include file="footer.tpl"}
 

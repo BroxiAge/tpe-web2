@@ -8,11 +8,12 @@
             <link rel="stylesheet" type="text/css" href="./css/estilo.css">
 
             <title>{$title}</title>
+            <script type="text/javascript" src="js/interaccion.js"></script>
             </head>
             <body>
                 <nav id = "nav">
                     <article class = "ingreso">
-                        <a href="{LOGOUT}"> Logout</a>
+                        <a href="{if $user->rol eq 0}{LOGIN}{/if}{if $user->rol eq 1}{LOGOUT}{/if}"> {if $user->rol eq 0}login{/if}{if $user->rol eq 1}logout{/if}</a>
                     </article>
                     <article>
                         <img class ="logo" src="images/logo.png" alt="">
@@ -20,12 +21,11 @@
                     <ul class = "navigation">
                         <li>
                         <button value="1" id="boton-menu"type="button" name="button"><img src="images/menu.png" alt=""></button>
-                        <li><a class="link-nav" href="index.html">Home</a></li>
-                        <li><a class="link-nav" href="productos.html">Producto</a></li>
-                        <li><a class="link-nav" href="quienes-somos.html">¿Quienes somos?</a></li>
-                        <li><a class="link-nav" href="contacto.html">Contacto</a></li>
+                        <li><a class="link-nav" href="{BASE_URL}home">Home</a></li>
+                        <li><a class="link-nav" href="{BASE_URL}spares">Producto</a></li>
+                        <li><a class="link-nav" href="{BASE_URL}categories">Categorias</a></li>
+                        <li><a class="link-nav" href="{BASE_URL}contacto">Contacto</a></li>
 
                         </li>
                     </ul>
                 </nav>
-                <h1>{$title}</h1>

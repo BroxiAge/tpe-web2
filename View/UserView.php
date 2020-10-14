@@ -20,6 +20,19 @@ class UserView{
         $smarty->display('templates/login.tpl'); // muestro el template 
     }
 
+    function showHome($user){
+        $smarty = new Smarty();
+        $smarty->assign('title', "Canary S.A.");
+        $smarty->assign ('user', $user);
+        $smarty->display('templates/home.tpl');
+    }
 
+    function showContacto($user){
+        $smarty = new Smarty();
+        $smarty->assign('title', "Contacto");
+        $smarty->assign ('user', $user);
+        $smarty->display('templates/contacto.tpl');
+    }
+    
 }
 ?>

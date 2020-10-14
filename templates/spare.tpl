@@ -2,25 +2,18 @@
 
 <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
-{$spare->name}
-{$spare->vehicle}
-
-                        {if $spare->id_categorie eq 1}
-                            Chasis
-                        {/if}
-                        {if $spare->id_categorie eq 2}
-                            Motor
-                        {/if}
-                        {if $spare->id_categorie eq 3}
-                            Accesorios
-                        {/if}
-                        {if $spare->id_categorie eq 4}
-                            Tren delantero
-                        {/if}
-
-{$spare->price}
-{$spare->description}
-<a href="../productos">atras</a>
+<h2>{$spare->name} {$spare->vehicle}</h2>
+    <h3>{foreach from=$categories item=categorie}
+        {if $spare->id_categorie eq $categorie->id_categorie}
+            {$categorie->name}
+        {/if}          
+         {/foreach}
+    </h3>     
+    
+                       
+<span>Precio:${$spare->price}</span>
+<p>descripcion:{$spare->description}</p>
+<a href="../spares">atras</a>
 
 
 {include file="footer.tpl"}

@@ -1,5 +1,6 @@
 {include file="header.tpl"}
 
+<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 <section id="contenedor-tabla-productos">
     <table>
         <thead>

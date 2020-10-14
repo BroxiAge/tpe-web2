@@ -16,6 +16,8 @@
 
     
     $r->addRoute("spares", "GET", "SpareController", "Spares");
+    $r->addRoute("home", "GET", "UserController", "Home");
+    $r->addRoute("contacto", "GET", "UserController", "Contacto");
     $r->addRoute("producto/:ID", "GET", "SpareController", "SpareDetail"); 
     
     $r->addRoute("edit", "POST", "SpareController", "EditSpare"); 

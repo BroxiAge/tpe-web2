@@ -33,6 +33,7 @@
     
     $r->addRoute("verifyUser", "POST", "UserController", "VerifyUser");
     $r->addRoute("logout", "GET", "UserController", "Logout");
+    $r->addRoute("login", "GET", "UserController", "Login");
     
     
     
@@ -40,10 +41,7 @@
    
 
     //Ruta por defecto.
-    $r->setDefaultRoute("UserController", "Login");
-
-    //Advance
-    $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
+    $r->setDefaultRoute("UserController", "Home");
 
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

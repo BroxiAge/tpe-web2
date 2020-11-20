@@ -30,12 +30,8 @@ class SpareModel{
     function insertSpare($name, $vehicle, $categorie, $price, $description){
 
         $sentencia = $this->db->prepare("INSERT INTO repuesto(name,vehicle,id_categorie,price,description) VALUES(?,?,?,?,?)");
-            $ok = $sentencia->execute(array($name, $vehicle, $categorie, $price, $description));
-            if(!$ok){
-    
-                var_dump($sentencia->errorInfo());
-                die;
-            }
+        return $ok = $sentencia->execute(array($name, $vehicle, $categorie, $price, $description));
+           
     }
 
     function getSpareByNameAndVehicle($name,$vehicle){
@@ -48,11 +44,22 @@ class SpareModel{
         $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=? , price=? , description=? WHERE name=? and vehicle=?");
         $sentencia->execute(array($categorie,$price,$description,$name,$vehicle));
     }
+    function modifySpareById($categorie, $price, $description, $name, $vehicle, $id){
+        $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=?, price=?, description=?, name=?, vehicle=? WHERE id=?");
+        $sentencia->execute(array($categorie, $price, $description, $name, $vehicle, $id));
+        return $sentencia->rowCount();
+    }
 
     function deleteSpare($name,$vehicle){
         $sentencia = $this->db->prepare("DELETE FROM repuesto WHERE name=? and vehicle=?");
         $sentencia->execute(array($name,$vehicle));
     }
+    
+    function deleteSpareById($id){
+        $sentencia = $this->db->prepare("DELETE FROM repuesto WHERE id=?");
+        $sentencia->execute(array($id));
+        return $sentencia->rowCount();
+    }
 
+    
 }
-?>

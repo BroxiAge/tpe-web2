@@ -27,6 +27,13 @@ class UserModel{
         return $sentencia->execute(array($user, $passHash, $rolUser ));
         
     }
+
+    function modifySpareById($rol, $id){
+        $sentencia = $this->db->prepare("UPDATE usuarios SET rol=? WHERE id=?");
+        return $sentencia->execute(array($rol, $id));
+        
+    }
+    
       
 }
 

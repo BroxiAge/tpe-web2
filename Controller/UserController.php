@@ -123,7 +123,7 @@ class UserController{
         
             if ($user->rol == 1){
                 $users = $this->model->getUsers();
-                $this->view->showUsers($users);
+                $this->view->showUsers($users, $user);
             }    
         }
         else{

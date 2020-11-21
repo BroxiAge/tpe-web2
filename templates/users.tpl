@@ -3,8 +3,6 @@
 
 <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
-<input type="text" name="input_vehicle">
-        <button type="submit">Borrar</button>
 
 <ul>
     {foreach from=$users item=user}

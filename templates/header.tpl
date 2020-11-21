@@ -25,6 +25,7 @@
                         <li><a class="link-nav" href="{BASE_URL}spares">Producto</a></li>
                         <li><a class="link-nav" href="{BASE_URL}categories">Categorias</a></li>
                         <li><a class="link-nav" href="{BASE_URL}contacto">Contacto</a></li>
+                        {if $user->rol eq 1}<li><a class="link-nav" href="{BASE_URL}users">Usuarios</a></li>{/if}
                         
 
                         </li>

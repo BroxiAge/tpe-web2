@@ -25,6 +25,7 @@
                         <li><a class="link-nav" href="{BASE_URL}spares">Producto</a></li>
                         <li><a class="link-nav" href="{BASE_URL}categories">Categorias</a></li>
                         <li><a class="link-nav" href="{BASE_URL}contacto">Contacto</a></li>
+                        
 
                         </li>
                     </ul>

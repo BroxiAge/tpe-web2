@@ -82,36 +82,26 @@ class UserController{
     function RegisterUser(){
         $user = $_POST["input_register_user"];
         $pass = $_POST["input_register_pass"];
-            
+        
             if(($user != '') && ($pass != '')){
                 $userFromDB = $this->model->GetUser($user);
                     
                     if (!isset($userFromDB->name)){
                         $passHash = password_hash ($pass , PASSWORD_DEFAULT );
                         $this->model->insertNewUser($user, $passHash);
-                        $this->Login();
-                }
+                    }
             }
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
             
-                
-            
-            
-
-            
-            
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
+                $newUser = $this->userModel->GetUser($user);    
+                $this->view->ShowHome($newUser);
+            }
     }
   
-
+    function EditUsers(){
+        echo 'asd';
+    }
 
 
 

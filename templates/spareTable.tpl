@@ -36,6 +36,7 @@
     {include file="editForm.tpl"}
 
 {/if}
+
 {if $user->rol eq -1}
     invitado
 {/if}

@@ -13,7 +13,7 @@
             <body>
                 <nav id = "nav">
                     <article class = "ingreso">
-                        <a href="{if $user->rol eq 0}{LOGIN}{/if}{if $user->rol eq 1}{LOGOUT}{/if}"> {if $user->rol eq 0}login{/if}{if $user->rol eq 1}logout{/if}</a>
+                        <a href="{if $user->rol eq 0}{LOGIN}{/if}{if $user->rol eq 1 or $user->rol eq 0}{LOGOUT}{/if}"> {if $user->rol eq 2}login{/if}{if $user->rol eq 1}logout{/if}</a>
                     </article>
                     <article>
                         <img class ="logo" src="images/logo.png" alt="">

@@ -13,7 +13,14 @@ class UserModel{
         $sentencia->execute(array($user));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+    function insertNewUser($user, $passHash){
+        $rolUser = 2; // Significa que no es admin, ni tampoco invitado. Solo usuario { 1 ADMIN / 2 USUARIO / 0 INVITADO }
+        $sentencia = $this->db->prepare("INSERT INTO usuarios(name, password, rol) VALUES(?,?,?)");
+        return $sentencia->execute(array($user, $passHash, $rolUser ));
+        
+    }
       
 }
 
 ?>
+

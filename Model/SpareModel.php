@@ -31,7 +31,6 @@ class SpareModel{
 
         $sentencia = $this->db->prepare("INSERT INTO repuesto(name,vehicle,id_categorie,price,description) VALUES(?,?,?,?,?)");
         return $ok = $sentencia->execute(array($name, $vehicle, $categorie, $price, $description));
-           
     }
 
     function getSpareByNameAndVehicle($name,$vehicle){

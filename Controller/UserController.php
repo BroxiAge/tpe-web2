@@ -79,6 +79,41 @@ class UserController{
         }
     }
 
+    function RegisterUser(){
+        $user = $_POST["input_register_user"];
+        $pass = $_POST["input_register_pass"];
+            
+            if(($user != '') && ($pass != '')){
+                $userFromDB = $this->model->GetUser($user);
+                    
+                    if (!isset($userFromDB->name)){
+                        $passHash = password_hash ($pass , PASSWORD_DEFAULT );
+                        $this->model->insertNewUser($user, $passHash);
+                        $this->Login();
+                }
+            }
+            
+                
+            
+            
+
+            
+            
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+  
+
+
+
 
 
 

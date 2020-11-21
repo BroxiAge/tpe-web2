@@ -35,6 +35,7 @@
     $r->addRoute("registerUser", "POST", "UserController", "RegisterUser");
     $r->addRoute("users", "GET", "UserController", "Users");
     
+    
 
     $r->addRoute("logout", "GET", "UserController", "Logout");
     $r->addRoute("login", "GET", "UserController", "Login");

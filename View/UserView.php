@@ -33,16 +33,14 @@ class UserView{
         $smarty->assign ('user', $user);
         $smarty->display('templates/contacto.tpl');
     }
+    
+    
 
-    function showUsers($user, $users) {
+    function showUsers($users) {
         $smarty = new Smarty();
         $smarty->assign('title', "Canary S.A.");
-        $smarty->assign ('user', $user);
         $smarty->assign ('users', $users);
         $smarty->display('templates/users.tpl');
     }
-
-    
-    
 }
 ?>

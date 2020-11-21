@@ -34,6 +34,9 @@ class UserController{
     }
 
     function Home(){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if(isset($_SESSION["USER"])){
             $user= $this->userModel->GetUser($_SESSION["USER"]);
         }else{
@@ -43,6 +46,9 @@ class UserController{
     }
 
     function Contacto(){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if(isset($_SESSION["USER"])){
             $user= $this->userModel->GetUser($_SESSION["USER"]);
         }else{
@@ -105,17 +111,23 @@ class UserController{
             echo 'escribi algo';
         }
     }
-
-    function Users(){
-        if(isset($_SESSION["USER"])){
-            $user= $this->userModel->GetUser($_SESSION["USER"]);
-        }else{
-            $user = $this->userModel->GetUser("invitado");
+        
+        function Users() {
+            
+            if(isset($_SESSION["USER"])){
+                $user = $this->Model->GetUser($_SESSION["USER"]);
+            
+                if ($user->rol == 1){
+                    $users = $this->userModel->getUsers();
+                    $this->view->showUsers($users);
+                }    
+            }
+            else{
+                echo 'no hay nada en SESSION';
+            }
         }
-        $users = $this->userModel->getUsers();
-        $this->view->showUsers($user, $users);
 
-    }
+    
     
     
     

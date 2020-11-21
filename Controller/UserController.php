@@ -114,11 +114,15 @@ class UserController{
         
         function Users() {
             
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
             if(isset($_SESSION["USER"])){
-                $user = $this->Model->GetUser($_SESSION["USER"]);
+                $user = $this->model->GetUser($_SESSION["USER"]);
             
                 if ($user->rol == 1){
-                    $users = $this->userModel->getUsers();
+                    $users = $this->model->getUsers();
                     $this->view->showUsers($users);
                 }    
             }

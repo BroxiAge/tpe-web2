@@ -15,7 +15,7 @@ class UserModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-    function getUsers($users){
+    function getUsers(){
         $sentencia = $this->db->prepare("SELECT * FROM usuarios");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);

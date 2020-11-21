@@ -135,10 +135,15 @@ class UserController{
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        $rol = $params[':ID'];
+        $user_name = $params[':ID'];
         if(isset($_SESSION["USER"])){
-            $user= $this->userModel->GetUser($_SESSION["USER"]);
-            $this->modifyRol($rol , $user->id);
+            $user= $this->userModel->GetUser($user_name);
+            if($user->rol == 1){
+                $this->modifyRol(0 , $user->id);
+            }else{
+                $this->modifyRol(1 ,$user->id);
+            }
+            
         }else{
             echo "no te hagas el piyo que no tenes permiso";
         }

@@ -112,24 +112,39 @@ class UserController{
         }
     }
         
-        function Users() {
-            
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
-
-            if(isset($_SESSION["USER"])){
-                $user = $this->model->GetUser($_SESSION["USER"]);
-            
-                if ($user->rol == 1){
-                    $users = $this->model->getUsers();
-                    $this->view->showUsers($users);
-                }    
-            }
-            else{
-                echo 'no hay nada en SESSION';
-            }
+    function Users() {
+        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
+
+        if(isset($_SESSION["USER"])){
+            $user = $this->model->GetUser($_SESSION["USER"]);
+        
+            if ($user->rol == 1){
+                $users = $this->model->getUsers();
+                $this->view->showUsers($users);
+            }    
+        }
+        else{
+            echo 'no hay nada en SESSION';
+        }
+    }
+
+    function ModifyRol($params = null){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $rol = $params[':ID'];
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+            $this->modifyRol($rol , $user->id);
+        }else{
+            echo "no te hagas el piyo que no tenes permiso";
+        }
+        $this->Users();
+
+    }
 
     
     

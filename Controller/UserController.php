@@ -34,6 +34,9 @@ class UserController{
     }
 
     function Home(){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if(isset($_SESSION["USER"])){
             $user= $this->userModel->GetUser($_SESSION["USER"]);
         }else{
@@ -43,6 +46,9 @@ class UserController{
     }
 
     function Contacto(){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if(isset($_SESSION["USER"])){
             $user= $this->userModel->GetUser($_SESSION["USER"]);
         }else{

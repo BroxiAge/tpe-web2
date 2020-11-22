@@ -132,22 +132,14 @@ class UserController{
     }
 
     function ModifyRol($params = null){
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        $user_name = $params[':ID'];
-        if(isset($_SESSION["USER"])){
-            $user= $this->userModel->GetUser($user_name);
-            if($user->rol == 1){
-                $this->modifyRol(0 , $user->id);
-            }else{
-                $this->modifyRol(1 ,$user->id);
-            }
+        $rolAModificar = $_POST["input_modify_rol"];
+        $userAModificar = $_POST["input_modify_user"];
+        
+        
+        $this->model->editRol($rolAModificar, $userAModificar);
             
-        }else{
-            echo "no te hagas el piyo que no tenes permiso";
-        }
-        $this->Users();
+            
+       
 
     }
 

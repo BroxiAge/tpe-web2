@@ -36,7 +36,7 @@ class UserView{
     
     
 
-    function showUsers($user, $users) {
+    function showUsers($users, $user) {
         $smarty = new Smarty();
         $smarty->assign('title', "Canary S.A.");
         $smarty->assign ('user', $user);

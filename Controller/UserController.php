@@ -154,6 +154,18 @@ class UserController{
             echo 'por favor, ingrese algún input.';
         }
 
+    function deleteUser(){
+        $user_name = $_POST["input-delete-user];
+
+        $user = $this->model->GetUser($user_name);
+        if($user){
+            $delete = $this->model->deleteUser($user);
+            echo $delete;
+        }else{
+            echo "no se encontro el usuario";
+        }
+    }
+
     
     }
     

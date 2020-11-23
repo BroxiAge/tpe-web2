@@ -33,6 +33,12 @@ class UserModel{
         return $sentencia->execute(array($rolAModificar, $userAModificar));
         
     }
+
+    function deleteUser($user_id){
+        $sentencia = $this->db->prepare("DELETE FROM ususarios WHERE id=?");
+        $sentencia->execute(array($user_id));
+        return $sentencia->rowCount();
+    }
     
       
 }

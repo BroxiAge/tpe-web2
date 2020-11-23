@@ -160,14 +160,14 @@ class UserController{
 
         $user = $this->model->GetUser($user_name);
         if($user){
-            $delete = $this->model->deleteUser($user->id);
+            $delete = $this->model->deleteUser($user->id_user);
             echo $delete;
         }else{
             echo "no se encontro el usuario";
         }
     }
 
-}
+
 
     
     

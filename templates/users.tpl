@@ -27,7 +27,7 @@
 
 <form action="deleteUser" method="POST">
     <label for="input-delete-user">Eliminar un usuario:</label>
-    <input type="text" name ="input_delete_user">
+    <input type="text" name ="input-delete-user">
     <button type="submit">Eliminar ususario</button>
 </form>
 

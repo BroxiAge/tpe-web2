@@ -34,10 +34,10 @@ class UserModel{
         
     }
 
-    function deleteUser($user_id){
-        $sentencia = $this->db->prepare("DELETE FROM ususarios WHERE id=?");
-        $sentencia->execute(array($user_id));
-        return $sentencia->rowCount();
+    function deleteUser($id_user){
+        $sentencia = $this->db->prepare("DELETE FROM usuarios WHERE id_user=?");
+        return $sentencia->execute(array($id_user));
+         
     }
     
       

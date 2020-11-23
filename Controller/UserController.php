@@ -135,16 +135,27 @@ class UserController{
         $rolAModificar = $_POST["input_modify_rol"];
         $userAModificar = $_POST["input_modify_user"];
         
+        if(($rolAModificar != '') && ($userAModificar != '')){
+            $userFromDB = $this->model->getUser($userAModificar);
+            
+            if (isset ($userFromDB->name) &&($userFromDB->rol <> ($rolAModificar)) ){
+                $this->model->editRol($rolAModificar, $userAModificar);
+                
+                $user = $this->model->GetUser($userAModificar);
+                $users = $this->model->getUsers();
+                $this->view->showUsers($users, $user);
+            }
+            else{
+                echo 'el usuario no existe en la DB';
+            }
         
-        $this->model->editRol($rolAModificar, $userAModificar);
-            
-            
-       
+        }
+        else{
+            echo 'por favor, ingrese algún input.';
+        }
 
+    
     }
-
-    
-    
     
     
     

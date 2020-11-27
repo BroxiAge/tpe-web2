@@ -8,7 +8,8 @@
             <link rel="stylesheet" type="text/css" href="./css/estilo.css">
 
             <title>{$title}</title>
-            <script type="text/javascript" src="js/interaccion.js"></script>
+            
+            <!-- <script src="./js/interaccion.js"></script> -->
             </head>
             <body>
                 <nav id = "nav">

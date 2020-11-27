@@ -1,6 +1,7 @@
 <?php
 require_once 'RouterClass.php';
 require_once 'api/ApiSparesController.php';
+require_once 'api/ApiComentariesController.php';
 
 // instacio el router
 $router = new Router();
@@ -12,6 +13,11 @@ $router = new Router();
     $router->addRoute('spare', 'POST', 'ApiSparesController', 'insertSpare');
     $router->addRoute('spare/:ID', 'PUT', 'ApiSparesController', 'updateSpare');
 
+    $router->addRoute('comentaries/:ID', 'GET', 'ApiComentariesController', 'getComentariesByProductId');
+    $router->addRoute('comentaries', 'POST', 'ApiComentariesController', 'insertCommentary');
+    $router->addRoute('comentaries', 'GET', 'ApiComentariesController', 'getComentaries');
+
 
  //run
  $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 
+ 

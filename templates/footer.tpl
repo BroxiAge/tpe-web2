@@ -1,4 +1,5 @@
         <footer>
+            
             <section class="contenedor-logo-footer"><img class ="logo-footer" src="images/logo.png" alt=""></section>
             <article class="datos-footer">
             <h3>Contacto y dónde encontrarnos:</h3>
@@ -30,7 +31,7 @@
             </section>
             </article>
         </footer>
-
+    
     </body>
     
 </html>

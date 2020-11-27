@@ -66,6 +66,7 @@ class SpareController{
             $user = $this->userModel->GetUser("invitado");
         }
         $repuesto_id = $params[':ID'];
+        $_SESSION['SPARE'] = $repuesto_id;
         $repuesto = $this->model->getSpare($repuesto_id);
         $categorias = $this->model->getCategories();
         $this->view->ShowSpare($repuesto,$categorias,$user);

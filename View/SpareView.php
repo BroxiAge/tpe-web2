@@ -31,7 +31,6 @@ class SpareView{
         $smarty->assign('categories', $categories);
         $smarty->assign ('spare', $spare);
         $smarty->assign ('user', $user);
-            
         $smarty->display('templates/spare.tpl');
     }
 

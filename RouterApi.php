@@ -13,9 +13,9 @@ $router = new Router();
     $router->addRoute('spare', 'POST', 'ApiSparesController', 'insertSpare');
     $router->addRoute('spare/:ID', 'PUT', 'ApiSparesController', 'updateSpare');
 
-    $router->addRoute('comentaries/:ID', 'GET', 'ApiComentariesController', 'getComentariesByProductId');
+    $router->addRoute('comentaries/:ID', 'GET', 'ApiComentariesController', 'getComentaries');
     $router->addRoute('comentaries', 'POST', 'ApiComentariesController', 'insertCommentary');
-    $router->addRoute('comentaries', 'GET', 'ApiComentariesController', 'getComentaries');
+    
 
 
  //run

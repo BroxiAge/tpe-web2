@@ -15,6 +15,12 @@ class UserModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    function GetUserById($user){
+        $sentencia = $this->db->prepare("SELECT * FROM usuarios WHERE id_user=?");
+        $sentencia->execute(array($user));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
+
     function getUsers(){
         $sentencia = $this->db->prepare("SELECT * FROM usuarios");
         $sentencia->execute();

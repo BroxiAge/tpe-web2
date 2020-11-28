@@ -14,28 +14,20 @@ class ApiComentariesController extends ApiController {
         
     }
 
-    public function getComentariesByProductId($params = null) {
-        
+   
+
+    public function getComentaries($params = null){
         $product_id = $params[':ID'];
         $ComentariesByProductId = $this->model->getComentariesByProductId($product_id);
-
-        if ($ComentariesByProductId) // verifica si la tarea existe
-            $this->view->response($ComentariesByProductId, 200);
-        else
-            $this->view->response("La tarea con el id=$product_i no existe", 404);
-    }
-
-    public function getComentaries(){
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+        foreach ($ComentariesByProductId as $commentary){
+            $user = $this->userModel->GetUserById($commentary->id_usuarios);
+            $commentary->id_usuarios = $user->name;
         }
-        $product_id = $_SESSION['SPARE'];
-        $ComentariesByProductId = $this->model->getComentariesByProductId($product_id);
 
         if ($ComentariesByProductId) // verifica si la tarea existe
             $this->view->response($ComentariesByProductId, 200);
         else
-            $this->view->response("La tarea con el id=$product_i no existe", 404);
+            $this->view->response([], 404);
     }
     
     public function insertCommentary(){

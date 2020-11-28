@@ -16,5 +16,7 @@ abstract class ApiController {
     function getData(){ 
         return json_decode($this->data); 
     }  
+
+   
 }
 

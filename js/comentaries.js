@@ -19,9 +19,10 @@ function iniciarPagina(){
 
 
 function getComentaries(){
+    const container = document.querySelector("#comentaries-list");
+    id_spare = container.dataset.idspare;
     
-    
-    fetch('http://localhost/web2/tpe-web2/api/comentaries')
+    fetch('http://localhost/web2/tpe-web2/api/comentaries/'+ id_spare)
         .then(response => response.json())
         .then(comentaries => render(comentaries)) 
         .catch(error => console.log(error));
@@ -30,16 +31,37 @@ function getComentaries(){
 function render(comentaries){
     const container = document.querySelector("#comentaries-list");
     container.innerHTML = ""; 
-    for (let comentarie of comentaries){
-        container.innerHTML += comentarie.commentary;
+    if(comentaries > 0){
+        for (let comentarie of comentaries){
+            let cont = document.createElement("article");
+            let user = document.createElement("h4");
+            user.innerText = comentarie.id_usuarios;
+            let commentary = document.createElement("p");
+            commentary.innerText = comentarie.commentary;
+            let score = document.createElement ("p");
+            score.innerText = "Valoracion de usuario: " + comentarie.score;
+            cont.appendChild(user);
+            cont.appendChild(commentary);
+            cont.appendChild(score);
+            container.appendChild(cont);
+        }
+    
+    }else{
+        container.innerText = "Aun no se han hecho comentarios";
     }
         
 }
 
 function addComentarie(){
+    const container = document.querySelector("#comentaries-list");
+    id_spare = container.dataset.idspare;
+    id_user = container.dataset.iduser;
     const commentary = {
         commentary: document.querySelector('input[name="input-comentarie"]').value,
-        score: document.querySelector('select[name="select-spare-score"]').value
+        score: document.querySelector('select[name="select-spare-score"]').value,
+        id_spare: id_spare,
+        id_user: id_user
+        
     }
     
 

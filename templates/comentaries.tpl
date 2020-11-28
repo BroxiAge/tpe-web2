@@ -1,6 +1,6 @@
 <br>    ------------------------quedafeoperoesunadivision---------------------
 
-<ul id= "comentaries-list">
+<ul data-idspare = "{$spare->id}" data-iduser = {$user->id_user} id= "comentaries-list">
     
             
 </ul>

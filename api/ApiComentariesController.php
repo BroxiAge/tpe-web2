@@ -27,7 +27,7 @@ class ApiComentariesController extends ApiController {
         if ($ComentariesByProductId) // verifica si la tarea existe
             $this->view->response($ComentariesByProductId, 200);
         else
-            $this->view->response([], 404);
+            $this->view->response("", 404);
     }
     
     public function insertCommentary(){

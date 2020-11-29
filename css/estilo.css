@@ -486,3 +486,38 @@ footer p{
 .link-hover{
   color: brown;
 }
+
+#comentaries-container{
+  margin-left: 4%;
+  margin-right: 4%;
+  padding: 20px;
+  padding-right: 30%;
+  box-shadow:2px 2px rgb(195, 212, 212);
+  background-color: rgb(245, 251, 255);
+}
+
+#comentaries-container article{
+  margin-bottom: 30px;
+}
+
+#comentaries-container p,h5{
+  margin: 10px;
+}
+
+#comentaries-container p{
+  margin-left: 4%;
+}
+
+.commentary-form-container{
+  margin-left: 2%;
+  margin-right: 8%;
+  margin-bottom: 20px;
+  
+  
+}
+
+.commentary-form-container label, textarea, select{
+  display: block;
+  margin: 5px;
+  
+}

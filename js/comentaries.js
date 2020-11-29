@@ -22,7 +22,7 @@ function getComentaries(){
     const container = document.querySelector("#comentaries-list");
     id_spare = container.dataset.idspare;
     
-    fetch('http://localhost/web2/tpe-web2/api/comentaries/'+ id_spare)
+    fetch('http://localhost/tpe-web2/api/comentaries/'+ id_spare)
         .then(response => response.json())
         .then(comentaries => render(comentaries)) 
         .catch(error => console.log(error));
@@ -31,10 +31,10 @@ function getComentaries(){
 function render(comentaries){
     const container = document.querySelector("#comentaries-list");
     container.innerHTML = ""; 
-    if(comentaries > 0){
+    if(comentaries != ""){
         for (let comentarie of comentaries){
             let cont = document.createElement("article");
-            let user = document.createElement("h4");
+            let user = document.createElement("h5");
             user.innerText = comentarie.id_usuarios;
             let commentary = document.createElement("p");
             commentary.innerText = comentarie.commentary;
@@ -57,7 +57,7 @@ function addComentarie(){
     id_spare = container.dataset.idspare;
     id_user = container.dataset.iduser;
     const commentary = {
-        commentary: document.querySelector('input[name="input-comentarie"]').value,
+        commentary: document.querySelector('textarea[name="input-comentarie"]').value,
         score: document.querySelector('select[name="select-spare-score"]').value,
         id_spare: id_spare,
         id_user: id_user
@@ -65,7 +65,7 @@ function addComentarie(){
     }
     
 
-    fetch('http://localhost/web2/tpe-web2/api/comentaries', {
+    fetch('http://localhost/tpe-web2/api/comentaries', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(commentary)

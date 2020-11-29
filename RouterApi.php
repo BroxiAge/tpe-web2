@@ -15,7 +15,7 @@ $router = new Router();
 
     $router->addRoute('comentaries/:ID', 'GET', 'ApiComentariesController', 'getComentaries');
     $router->addRoute('comentaries', 'POST', 'ApiComentariesController', 'insertCommentary');
-    
+    $router->addRoute('comentaries/:ID', 'DELETE', 'ApiComentariesController', 'deleteCommentary');
 
 
  //run

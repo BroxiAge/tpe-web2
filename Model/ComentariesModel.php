@@ -27,5 +27,11 @@ class ComentariesModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    function deleteCommentaryById($id){
+        $sentencia = $this->db->prepare("DELETE FROM comentarios WHERE id=?");
+        $sentencia->execute(array($id));
+        return $sentencia->rowCount();
+    }
+
     
 }

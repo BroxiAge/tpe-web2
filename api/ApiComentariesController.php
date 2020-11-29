@@ -39,11 +39,19 @@ class ApiComentariesController extends ApiController {
             $this->view->response( $this->model->getCommentary($ok), 201);
         else
             $this->view->response("El comentario no se pudo insertar", 404);
+    }
 
+    public function deleteCommentary($params = null) {
+        $id = $params[':ID'];
+        $result =  $task = $this->model->deleteCommentaryById($id);
 
-
+        if($result > 0)
+            $this->view->response("La tarea con el id=$id fue eliminada", 200);
+        else
+            $this->view->response("La tarea con el id=$id no existe", 404);
     }
     
+
 
 
 

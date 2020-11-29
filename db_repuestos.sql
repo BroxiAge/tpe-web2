@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2020 a las 00:27:39
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Servidor: localhost
+-- Tiempo de generación: 29-11-2020 a las 16:33:29
+-- Versión del servidor: 10.4.16-MariaDB
+-- Versión de PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,6 +41,32 @@ INSERT INTO `categoria` (`id_categorie`, `name`) VALUES
 (2, 'motor'),
 (4, 'tren delantero'),
 (30, 'accesorios');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id` int(11) NOT NULL,
+  `commentary` varchar(255) NOT NULL,
+  `score` int(11) NOT NULL,
+  `id_repuesto` int(11) NOT NULL,
+  `id_usuarios` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `commentary`, `score`, `id_repuesto`, `id_usuarios`) VALUES
+(1, 'Muy buen producto', 2, 1, 3),
+(2, 'Todo correcto', 4, 1, 3),
+(3, 'Soy el primer comentario', 3, 3, 3),
+(4, 'Soy el segundo comentario', 3, 3, 3),
+(5, 'Ahora estoy haciendo un comentario un poco mas largo para poder ver como se visualiza en la pagina wen. Excelente producto.', 5, 3, 3),
+(6, 'Yo tambien comento.', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -102,6 +128,12 @@ ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categorie`);
 
 --
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `repuesto`
 --
 ALTER TABLE `repuesto`
@@ -122,6 +154,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `categoria`
   MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `repuesto`

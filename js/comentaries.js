@@ -22,7 +22,7 @@ function getComentaries(){
     const container = document.querySelector("#comentaries-list");
     id_spare = container.dataset.idspare;
     
-    fetch('http://localhost/tpe-web2/api/comentaries/'+ id_spare)
+    fetch('http://localhost/web2/tpe-web2/api/comentaries/'+ id_spare)
         .then(response => response.json())
         .then(comentaries => render(comentaries)) 
         .catch(error => console.log(error));
@@ -65,7 +65,7 @@ function addComentarie(){
     }
     
 
-    fetch('http://localhost/tpe-web2/api/comentaries', {
+    fetch('http://localhost/web2/tpe-web2/api/comentaries', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(commentary)

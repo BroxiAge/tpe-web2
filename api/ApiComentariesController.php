@@ -31,16 +31,9 @@ class ApiComentariesController extends ApiController {
     }
     
     public function insertCommentary(){
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        $spare_id = $_SESSION['SPARE'];
-        if(isset($_SESSION["USER"])){
-            $userFromDb = $this->userModel->GetUser($_SESSION["USER"]);
-        }
-        $user = $userFromDb->id_user;
+        
         $body = $this->getData(); //es un OBJ
-        $ok =$this->model->insertCommentary($body->commentary, $body->score, $user,$spare_id);
+        $ok =$this->model->insertCommentary($body->commentary, $body->score, $body->id_user, $body->id_spare);
         
         if (!empty($ok)) // verifica si la tarea existe
             $this->view->response( $this->model->getCommentary($ok), 201);

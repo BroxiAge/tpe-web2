@@ -23,7 +23,8 @@
                             {/if}
                         {/foreach}
                     </td> 
-                    <td>{$repuesto->price}</td>   
+                    <td>{$repuesto->price}</td> 
+                    {if $user->rol eq 1}<td><a href="{BASE_URL}delete/{$repuesto->id}">Eliminar repuesto</a></td>{/if} 
             </tr>
     
             {/foreach}

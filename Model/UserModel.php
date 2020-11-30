@@ -34,9 +34,9 @@ class UserModel{
         
     }
 
-    function editRol($rolAModificar, $userAModificar){
-        $sentencia = $this->db->prepare("UPDATE usuarios SET rol=? WHERE name=?");
-        return $sentencia->execute(array($rolAModificar, $userAModificar));
+    function editRol($nuevoRol, $id_user){
+        $sentencia = $this->db->prepare("UPDATE usuarios SET rol=? WHERE id_user=?");
+        return $sentencia->execute(array($nuevoRol, $id_user));
         
     }
 

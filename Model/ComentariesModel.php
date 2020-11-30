@@ -33,5 +33,17 @@ class ComentariesModel{
         return $sentencia->rowCount();
     }
 
+    function deleteCommentaryByUsrId($usr_id){
+        $sentencia = $this->db->prepare("DELETE FROM comentarios WHERE id_usuarios=?");
+        $sentencia->execute(array($usr_id));
+        return $sentencia->rowCount();
+    }
+
+    function deleteCommentaryBySpareId($id_spare){
+        $sentencia = $this->db->prepare("DELETE FROM comentarios WHERE id_repuesto=?");
+        $sentencia->execute(array($id_spare));
+        return $sentencia->rowCount();
+    }
+    
     
 }

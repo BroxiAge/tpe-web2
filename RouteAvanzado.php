@@ -21,7 +21,7 @@
     $r->addRoute("producto/:ID", "GET", "SpareController", "SpareDetail"); 
     
     $r->addRoute("edit", "POST", "SpareController", "EditSpare"); 
-    $r->addRoute("delete", "POST", "SpareController", "DeleteSpare"); 
+    $r->addRoute("delete/:ID", "GET", "SpareController", "DeleteSpare"); 
 
 
 
@@ -34,8 +34,8 @@
     $r->addRoute("verifyUser", "POST", "UserController", "VerifyUser");
     $r->addRoute("registerUser", "POST", "UserController", "RegisterUser");
     $r->addRoute("users", "GET", "UserController", "Users");
-    $r->addRoute("modifyRol", "POST", "UserController", "ModifyRol");
-    $r->addRoute("deleteUser", "POST", "UserController", "deleteUser");
+    $r->addRoute("modifyRol/:ID", "GET", "UserController", "ModifyRol");
+    $r->addRoute("deleteUser/:ID", "GET", "UserController", "deleteUser");
     
     
 

@@ -39,9 +39,9 @@ class SpareModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-    function modifySpare($name,$vehicle,$categorie,$price,$description){
-        $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=? , price=? , description=? WHERE name=? and vehicle=?");
-        $sentencia->execute(array($categorie,$price,$description,$name,$vehicle));
+    function modifySpare($id,$categorie,$price,$description){
+        $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=? , price=? , description=? WHERE id=?");
+        $sentencia->execute(array($categorie,$price,$description,$id));
     }
     function modifySpareById($categorie, $price, $description, $name, $vehicle, $id){
         $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=?, price=?, description=?, name=?, vehicle=? WHERE id=?");

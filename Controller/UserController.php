@@ -2,7 +2,7 @@
 
 require_once "./View/UserView.php";
 require_once "./Model/UserModel.php";
-
+require_once "./Model/ComentariesModel.php";
 
 class UserController{
 
@@ -15,6 +15,7 @@ class UserController{
         $this->view = new UserView();
         $this->model = new UserModel();
         $this->userModel = new UserModel();
+        $this->comentariesModel = new ComentariesModel();
     }
 
     function Login(){
@@ -132,39 +133,40 @@ class UserController{
     }
 
     function ModifyRol($params = null){
-        $rolAModificar = $_POST["input_modify_rol"];
-        $userAModificar = $_POST["input_modify_user"];
-        
-        if(($rolAModificar != '') && ($userAModificar != '')){
-            $userFromDB = $this->model->getUser($userAModificar);
-            
-            if (isset ($userFromDB->name) &&($userFromDB->rol <> ($rolAModificar)) ){
-                $this->model->editRol($rolAModificar, $userAModificar);
-                
-                $user = $this->model->GetUser($userAModificar);
-                $users = $this->model->getUsers();
-                $this->view->showUsers($users, $user);
-            }
-            else{
-                echo 'el usuario no existe en la DB';
-            }
-        
+        $id_user = $params[':ID'];
+        $userFromDB = $this->model->GetUserById($id_user);
+        $rolActual = $userFromDB->rol;
+        if ($rolActual == 1){
+            $nuevoRol = 0;
+            $this->model->editRol($nuevoRol, $id_user);
+        }elseif ($rolActual == 0) {
+            $nuevoRol = 1;
+            $this->model->editRol($nuevoRol, $id_user);
+        }else{
+            echo 'no te pases de piyo';
         }
-        else{
-            echo 'por favor, ingrese algún input.';
-        }
+        
+        $this->Users();
     }
 
-    function deleteUser(){
-        $user_name = $_POST["input-delete-user"];
-
-        $user = $this->model->GetUser($user_name);
-        if($user){
-            $delete = $this->model->deleteUser($user->id_user);
-            echo $delete;
-        }else{
-            echo "no se encontro el usuario";
+    function deleteUser($params = null){
+        $id_user = $params[':ID'];
+       
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
+
+        if(isset($_SESSION["USER"])){
+            $user = $this->model->GetUser($_SESSION["USER"]);
+        
+            if ($user->rol == 1){
+                $this->model->deleteUser($id_user);
+                $this->comentariesModel->deleteCommentaryByUsrId($id_user);
+                
+            }    
+        }
+        $this->Users();
+        
     }
 
 

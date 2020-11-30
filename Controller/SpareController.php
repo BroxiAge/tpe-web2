@@ -3,6 +3,7 @@
 require_once "./View/SpareView.php";
 require_once "./Model/SpareModel.php";
 require_once "./Model/UserModel.php";
+require_once "./Model/ComentariesModel.php";
 
 
 
@@ -16,6 +17,7 @@ class SpareController{
         $this->view = new SpareView();
         $this->model = new SpareModel();
         $this->userModel = new UserModel();
+        $this->comentariesModel = new ComentariesModel();
     }
 
     private function checkLoggedIn(){
@@ -88,27 +90,31 @@ class SpareController{
                 $this->model->InsertSpare($name,$vehicle,$categorie,$price,$description);  
             }
             else{
-                $this->model->modifySpare($name,$vehicle,$categorie,$price,$description);
+                $spare = $this->model->getSpareByNameAndVehicle($name,$vehicle);
+                $this->model->modifySpare($spare->id,$categorie,$price,$description);
             }
         }   
         $this->Spares();
         
     }
 
-    function DeleteSpare(){
+    function DeleteSpare($params = null){
         $this->checkLoggedIn();
-
-        $name = $_POST["input_name"];
-        $vehicle = $_POST["input_vehicle"];
+        $id_spare = $params[':ID'];
         
-        if (($name != '') && ($vehicle!= '')){
-            $algo = $this->model->getSpareByNameAndVehicle($name,$vehicle); //comprueba si existe en la db.
-            if($algo->name = $name){ //Se pregunta por el primer item, porque si devolvió de la db, es que existe.
-                $this->model->deleteSpare($name,$vehicle);  
-            }//else{
-               // $this->view->showError("El repuesto no existe");
-            //}
+         
+        //esta parte es para eliminar tambien los comentarios relacionados a el producto en cuestión.
+        if(isset($_SESSION["USER"])){
+            $user = $this->model->GetUser($_SESSION["USER"]);
+        
+            if ($user->rol == 1){
+                $this->model->deleteSpareById($id_spare); 
+                $this->comentariesModel->deleteCommentaryBySpareId($id_spare);
+                
+            }    
         }
+        
+        
         $this->Spares();
     }
 

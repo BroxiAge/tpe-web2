@@ -4,6 +4,8 @@ function iniciarPagina(){
     "use strict";
 
     getComentaries();
+
+    
     
     document.querySelector('#cometarie-form').addEventListener('submit', e => {
         // evita el envio del form default
@@ -28,7 +30,13 @@ function getComentaries(){
         .catch(error => console.log(error));
 }
 
-
+function inicButtons(){
+    let deleteButtons = document.getElementsByClassName("delete-button");
+    for (let i = 0; i < deleteButtons.length; i++) {
+         deleteButtons[i].addEventListener("click",deleteComentarie);
+        
+    }
+}
 
 function render(comentaries){
     const container = document.querySelector("#comentaries-list");
@@ -47,18 +55,18 @@ function render(comentaries){
             cont.appendChild(user);
             cont.appendChild(commentary);
             cont.appendChild(score);
-            if(rol = 1){
-                let form = document.createElement("form");
-                form.setAttribute("data-idcommentary", comentarie.id);
-                let btn = document.createElement("button");
-                btn.setAttribute("type", "submit");
-                btn.innerText = "Eliminar comentario";
-                form.appendChild(btn);
-                cont.appendChild(form);
+            if(rol == 1){
+                let btn = document.createElement("input");
+                btn.setAttribute("type", "button");
+                btn.setAttribute("data-idcommentary", comentarie.id);
+                btn.setAttribute("value", "Eliminar comentario");
+                btn.setAttribute("class","delete-button");
+                cont.appendChild(btn);
             }
             container.appendChild(cont);
 
         }
+        inicButtons();
     
     }else{
         container.innerText = "Aun no se han hecho comentarios";
@@ -87,4 +95,12 @@ function addComentarie(){
         .then(response => response.json())
         .then(c => getComentaries())
         .catch(error => console.log(error));
+}
+
+function deleteComentarie(){
+    id = this.dataset.idcommentary;
+    fetch("http://localhost/web2/tpe-web2/api/comentaries/" + id,{
+        method : "DELETE",
+       }).then(m =>getComentaries())
+    
 }

@@ -51,6 +51,24 @@ class ApiComentariesController extends ApiController {
             $this->view->response("La tarea con el id=$id no existe", 404);
     }
     
+    public function getRol() {
+
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if(isset($_SESSION["USER"])){
+            $user= $this->userModel->GetUser($_SESSION["USER"]);
+        }else{
+            $user = $this->userModel->GetUser("invitado");
+        }
+        
+        if ($user) // verifica si la tarea existe
+            $this->view->response($user->rol, 200);
+        else
+            $this->view->response("", 404);
+
+
+    }
 
 
 

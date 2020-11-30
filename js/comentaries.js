@@ -28,9 +28,13 @@ function getComentaries(){
         .catch(error => console.log(error));
 }
 
+
+
 function render(comentaries){
     const container = document.querySelector("#comentaries-list");
     container.innerHTML = ""; 
+    let rol = container.dataset.roluser;
+    
     if(comentaries != ""){
         for (let comentarie of comentaries){
             let cont = document.createElement("article");
@@ -43,7 +47,17 @@ function render(comentaries){
             cont.appendChild(user);
             cont.appendChild(commentary);
             cont.appendChild(score);
+            if(rol = 1){
+                let form = document.createElement("form");
+                form.setAttribute("data-idcommentary", comentarie.id);
+                let btn = document.createElement("button");
+                btn.setAttribute("type", "submit");
+                btn.innerText = "Eliminar comentario";
+                form.appendChild(btn);
+                cont.appendChild(form);
+            }
             container.appendChild(cont);
+
         }
     
     }else{

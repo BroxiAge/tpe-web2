@@ -1,6 +1,6 @@
 <article id= "comentaries-container">
     <h4>Comentarios:</h4>
-    <ul data-idspare = "{$spare->id}" data-iduser = {$user->id_user} id= "comentaries-list">
+    <ul data-idspare = "{$spare->id}" data-iduser = {$user->id_user} data-roluser = {$user->rol} id= "comentaries-list">
         
                 
     </ul>

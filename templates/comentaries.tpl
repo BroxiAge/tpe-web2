@@ -30,7 +30,7 @@
 
 
 
-<script src="../js/comentaries.js"></script>
+<script src="js/comentaries.js"></script>
 
 
 

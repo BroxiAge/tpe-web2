@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    background-image: url("images/login-background-image.jpg");
+    background-size: cover;
+}
+
+#login-container{
+    display: flex;
+    padding: 30px 10%;
+    justify-content: space-around;
+}
+
+#login-container section{
+    width: 40%;
+}
+
+#login-container label,input,button{
+    display: block;
+    margin: 20px;
+    font-size: 20px;
+}

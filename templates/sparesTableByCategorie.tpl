@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<link rel="stylesheet" type="text/css" href="../css/estilo.css">
+<link rel="stylesheet" type="text/css" href="/css/estilo.css">
 <section id="contenedor-tabla-productos">
     <table>
         <thead>
@@ -17,7 +17,10 @@
                     <td><a href="{BASE_URL}producto/{$repuesto->id}">{$repuesto->name}</a></td>
                     <td>{$repuesto->vehicle}</td> 
                     <td>{$repuesto->price}</td>   
+                    
             </tr>
+            
+        
     
             {/foreach}
         </tbody>

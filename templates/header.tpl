@@ -4,8 +4,9 @@
             <!-- Required meta tags -->
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <base href="{BASE_URL}" >
 
-            <link rel="stylesheet" type="text/css" href="./css/estilo.css">
+            <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
             <title>{$title}</title>
             

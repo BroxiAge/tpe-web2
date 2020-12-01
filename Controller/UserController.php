@@ -97,12 +97,11 @@ class UserController{
                 $passHash = password_hash ($pass , PASSWORD_DEFAULT );
                 $this->model->insertNewUser($user, $passHash);
                 
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                
-                    $newUser = $this->userModel->GetUser($user);    
-                    $this->view->ShowHome($newUser);
-                }
+                session_start();
+                $_SESSION["USER"] = $user;
+                $_SESSION['LAST_ACTIVITY'] = time();
+
+                header("Location: ".BASE_URL."home");
             }
             else{
                 echo 'usr ya existe';

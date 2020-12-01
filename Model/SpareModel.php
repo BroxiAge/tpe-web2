@@ -27,10 +27,12 @@ class SpareModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-    function insertSpare($name, $vehicle, $categorie, $price, $description){
-
-        $sentencia = $this->db->prepare("INSERT INTO repuesto(name,vehicle,id_categorie,price,description) VALUES(?,?,?,?,?)");
-        return $ok = $sentencia->execute(array($name, $vehicle, $categorie, $price, $description));
+    function insertSpare($name, $vehicle, $categorie, $price, $description, $imagen = null){
+        $pathImg = null;
+        if ($imagen)
+            $pathImg = $this->uploadImage($imagen);
+        $sentencia = $this->db->prepare("INSERT INTO repuesto(name,vehicle,id_categorie,price,description, imagen) VALUES(?,?,?,?,?,?)");
+        return $ok = $sentencia->execute(array($name, $vehicle, $categorie, $price, $description, $pathImg));
     }
 
     function getSpareByNameAndVehicle($name,$vehicle){
@@ -58,6 +60,12 @@ class SpareModel{
         $sentencia = $this->db->prepare("DELETE FROM repuesto WHERE id=?");
         $sentencia->execute(array($id));
         return $sentencia->rowCount();
+    }
+
+    private function uploadImage($image){
+        $target = 'images/spare/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);
+        return $target;
     }
 
     

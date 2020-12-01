@@ -4,16 +4,19 @@
 <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 
 
-<ul>
+<article id= "users-container">
+    <h2>Usuarios registrados</h2>
+    <ul>
     {foreach from=$users item=user}
-         <li>
+        <li>
             {if  $user->rol eq 0 ||  $user->rol eq 1 }{$user->name}{/if}
             {if $user->rol eq 0}<a  href="{BASE_URL}modifyRol/{$user->id_user}" >Hacer admin</a>{/if}
             {if $user->rol eq 1}<a  href="{BASE_URL}modifyRol/{$user->id_user}" >Quitar admin</a>{/if}
             {if  $user->rol eq 0 ||  $user->rol eq 1 }<a href= "{BASE_URL}deleteUser/{$user->id_user}">Eliminar usuario</a>{/if}
         </li>
     {/foreach}
-</ul>
+    </ul>
+</article>
 
 {include file="footer.tpl"}
 

@@ -216,6 +216,7 @@ footer p{
   
 }
 
+
   /*Quienes somos*/
   .QSGlobal{
     display:flex;
@@ -521,3 +522,75 @@ footer p{
   margin: 5px;
   
 }
+
+#spare-container{
+  display: flex;
+  align-items: flex-start;
+  background-color: rgb(231, 221, 199);
+  margin: 20px 4%;
+  justify-content: space-around;
+  padding: 20px 2%;
+}
+
+#spare-container form label,input{
+  display: block;
+}
+
+#users-container ul{
+  list-style: none;
+}
+
+#categories-container ul{
+  list-style: none;
+}
+
+#categories-container{
+  background-color: rgb(240, 223, 239);
+  margin: 20px 4%;
+  padding: 20px;
+}
+
+#categories-container a{
+  text-decoration: none;
+  font-size: 20px;
+  margin: 10px;
+}
+
+#categories-container .categorie-link{
+  font-size: 30px;
+}
+
+#categories-container label, input, button{
+  margin: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#categories-container input{
+  width: 400px;
+  height: 30px;
+}
+
+#categories-container form{
+  margin-bottom: 30px;
+}
+
+#categories-container button{
+  background-color: rgb(94, 94, 94);
+  color: white;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#spares-container{
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(240, 223, 239);
+  margin: 20px 4%;
+  padding: 20px;
+  
+}
+
+

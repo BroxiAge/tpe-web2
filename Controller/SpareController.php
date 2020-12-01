@@ -84,16 +84,17 @@ class SpareController{
         $description = $_POST["input_description"];
         
         if (($name != '') && ($vehicle!= '') && ($categorie!= '') && ($price!= '')){ //comprueba que no esten los campos vacíos.
-            
-            $algo = $this->model->getSpareByNameAndVehicle($name,$vehicle); //comprueba si existe en la db.
-            if(!isset($algo->name )){ //Se pregunta por el primer item, porque si devolvió de la db, es que existe.
-                $this->model->InsertSpare($name,$vehicle,$categorie,$price,$description);  
+            $agregar = true;
+        }
+            if ($agregar) {
+                if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
+                    
+                    $this->model->InsertSpare($name,$vehicle,$categorie,$price,$description,$_FILES['input_name']['tmp_name']); 
+                }
+                else {
+                    $this->model->InsertSpare($name,$vehicle,$categorie,$price,$description); 
+                }
             }
-            else{
-                $spare = $this->model->getSpareByNameAndVehicle($name,$vehicle);
-                $this->model->modifySpare($spare->id,$categorie,$price,$description);
-            }
-        }   
         $this->Spares();
         
     }
@@ -105,7 +106,7 @@ class SpareController{
          
         //esta parte es para eliminar tambien los comentarios relacionados a el producto en cuestión.
         if(isset($_SESSION["USER"])){
-            $user = $this->model->GetUser($_SESSION["USER"]);
+            $user = $this->userModel->GetUser($_SESSION["USER"]);
         
             if ($user->rol == 1){
                 $this->model->deleteSpareById($id_spare); 
@@ -118,6 +119,7 @@ class SpareController{
         $this->Spares();
     }
 
+    
     
     
     

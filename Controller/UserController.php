@@ -104,11 +104,11 @@ class UserController{
                 header("Location: ".BASE_URL."home");
             }
             else{
-                echo 'usr ya existe';
+                $this->view->ShowLogin('El usuario ya existe ');
             }
         
         } else {
-            echo 'escribi algo';
+            $this->view->ShowLogin('Por favor, ingrese usuario y contraseña ');
         }
     }
         

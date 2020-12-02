@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="./css/login.css">
-
+{$message}
 <article id="login-container">
     <section>
         <h2> Logearse </h2>

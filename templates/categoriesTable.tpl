@@ -7,7 +7,7 @@
                 <a class="categorie-link" href="{BASE_URL}categories/{$categorie->name}">{$categorie->name}</a>
                 {if $user->rol eq 1}
                     <a href="{BASE_URL}deleteCategorie/{$categorie->id_categorie}">Eliminar categoria</a>
-                    <form action="modifyCategorie" method ="POST" >
+                    <form action="modifyCategorie/{$categorie->id_categorie}" method ="POST" >
                             <label for="input_new_name">Ingrese nuevo nombre de categoria:</label>
                             <input type="text" cols="30" name="input_new_name">
                             <button type="submit">Modificar</button>

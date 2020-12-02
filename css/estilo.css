@@ -532,6 +532,10 @@ footer p{
   padding: 20px 2%;
 }
 
+#spare-container img{
+  width: 400px;
+}
+
 #spare-container form label,input{
   display: block;
 }

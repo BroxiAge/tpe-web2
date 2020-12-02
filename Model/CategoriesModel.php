@@ -39,17 +39,17 @@ class CategoriesModel{
         $sentencia->execute(array($categorie_name));
     }
 
-    function deleteCategorie($categorie_name){
+    function deleteCategorie($categorie_id){
 
-        $sentencia = $this->db->prepare("DELETE FROM categoria WHERE name=?");
-        $sentencia->execute(array($categorie_name));
+        $sentencia = $this->db->prepare("DELETE FROM categoria WHERE id_categorie=?");
+        $sentencia->execute(array($categorie_id));
 
 
     }
 
-    function modifyCategorie($categorie_name, $new_name){
-        $sentencia = $this->db->prepare("UPDATE categoria SET name=? WHERE name=?");
-        $sentencia->execute(array($new_name, $categorie_name));
+    function modifyCategorie($new_name, $categorie_id){
+        $sentencia = $this->db->prepare("UPDATE categoria SET name=? WHERE id_categorie=?");
+        $sentencia->execute(array($new_name, $categorie_id));
     }
     
 }

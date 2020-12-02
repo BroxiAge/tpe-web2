@@ -22,11 +22,14 @@
     {if isset($spare->imagen)}
         <img src="{$spare->imagen}"/>
     {/if}
+    {if !isset($spare->imagen)}
+        <img src="images/img-default.jpg"/>
+    {/if}
     {if $user->rol eq 1}
-        <form action="edit/{$spare->id}" method ="POST" enctype="multipart/form-data">
+        <form action="editar/{$spare->id}" method ="POST" enctype="multipart/form-data">
             <span>Editar producto</span>
             <label for="input_name">Pieza:</label>
-            <input type="text" name="input_name">
+            <input type="text" name="input_spare_name">
             <label for="input_vehicle">Vehiculo:</label>
             <input type="text" name="input_vehicle">
             <select name="select_categorie" id="select_categorie">
@@ -38,6 +41,9 @@
             <input type="number" name="input_price">
             <textarea name="input_description" id="input_description" cols="30" rows="10" placeholder="ingrese la descripcion del producto"></textarea>
             <input type="file" name="input_name" id="imageToUpload">
+            
+            <input type="checkbox" class="form-check-input" id="input-delete-image" name="input-delete-image">
+            <label for ="input-delete-image">Eliminar imagen del producto </label>
             <button type="submit">Modificar</button>
         </form>
 

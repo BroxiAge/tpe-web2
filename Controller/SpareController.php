@@ -74,7 +74,7 @@ class SpareController{
         $this->view->ShowSpare($repuesto,$categorias,$user);
     }
     
-    function EditSpare (){
+    function EditSpare (){ //es el agregar
         $this->checkLoggedIn();
         
         $name = $_POST["input_name"];
@@ -96,6 +96,45 @@ class SpareController{
                 }
             }
         $this->Spares();
+        
+    }
+    function EditarSpare($params = null){
+        $id_spare = $params[':ID'];
+        
+        $name = $_POST["input_spare_name"];
+        $vehicle = $_POST["input_vehicle"];
+        $categorie = $_POST["select_categorie"];
+        $price = $_POST["input_price"];
+        $description = $_POST["input_description"];
+        $delete_image = $_POST["input-delete-image"];
+
+        if(isset($delete_image)){
+            $this->model->deleteImage($id_spare);
+        }
+        
+        $spare = $this->model->getSpare($id_spare);
+        
+        if ($name == ''){
+            $name = $spare->name;
+        }
+        if ($vehicle == ''){
+            $vehicle = $spare->vehicle;
+        }
+        if ($categorie == ''){
+            $categorie = $spare->id_categorie;
+        }
+        if ($price == ''){
+            $price = $spare->price;
+        }
+        if ($description == ''){
+            $description = $spare->description;
+        }
+        $this->model->modifySpareById($categorie, $price, $description, $name, $vehicle, $id_spare);
+        
+        if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ){
+            $this->model->modifyImagen($_FILES['input_name']['tmp_name'], $id_spare);
+        }
+        header("Location: ".BASE_URL."producto/".$id_spare);
         
     }
 

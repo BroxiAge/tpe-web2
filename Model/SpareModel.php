@@ -34,6 +34,28 @@ class SpareModel{
         $sentencia = $this->db->prepare("INSERT INTO repuesto(name,vehicle,id_categorie,price,description, imagen) VALUES(?,?,?,?,?,?)");
         return $ok = $sentencia->execute(array($name, $vehicle, $categorie, $price, $description, $pathImg));
     }
+    function modifyImagen($imagen = null, $id){
+        $pathImg = null;
+        if ($imagen)
+        $pathImg = $this->uploadImage($imagen);
+        
+        $sentencia = $this->db->prepare("UPDATE repuesto SET imagen=? WHERE id=?");
+        $sentencia->execute(array($pathImg, $id));
+        return $sentencia->rowCount();
+    }
+    function deleteImage($id){
+        $imagen = null;
+        $sentencia = $this->db->prepare("UPDATE repuesto SET imagen=? WHERE id=?");
+        $sentencia->execute(array($imagen, $id));
+    }
+
+    function modifySpareById($categorie, $price, $description, $name, $vehicle, $id){
+        
+        $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=?, price=?, description=?, name=?, vehicle=? WHERE id=?");
+        $sentencia->execute(array($categorie, $price, $description, $name, $vehicle, $id));
+        return $sentencia->rowCount();
+    }
+    
 
     function getSpareByNameAndVehicle($name,$vehicle){
         $sentencia = $this->db->prepare("SELECT * FROM repuesto WHERE name=? and vehicle=?");
@@ -45,11 +67,7 @@ class SpareModel{
         $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=? , price=? , description=? WHERE id=?");
         $sentencia->execute(array($categorie,$price,$description,$id));
     }
-    function modifySpareById($categorie, $price, $description, $name, $vehicle, $id){
-        $sentencia = $this->db->prepare("UPDATE repuesto SET id_categorie=?, price=?, description=?, name=?, vehicle=? WHERE id=?");
-        $sentencia->execute(array($categorie, $price, $description, $name, $vehicle, $id));
-        return $sentencia->rowCount();
-    }
+    
 
     function deleteSpare($name,$vehicle){
         $sentencia = $this->db->prepare("DELETE FROM repuesto WHERE name=? and vehicle=?");
@@ -60,6 +78,11 @@ class SpareModel{
         $sentencia = $this->db->prepare("DELETE FROM repuesto WHERE id=?");
         $sentencia->execute(array($id));
         return $sentencia->rowCount();
+    }
+    function getSparesByIdCategorie($id_categorie){
+        $sentencia = $this->db->prepare("SELECT *  FROM repuesto WHERE id_categorie=?");
+        $sentencia->execute(array($id_categorie));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     private function uploadImage($image){

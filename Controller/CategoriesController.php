@@ -3,6 +3,9 @@
 require_once "./View/CategoriesView.php";
 require_once "./Model/CategoriesModel.php";
 require_once "./Model/UserModel.php";
+require_once "./Model/SpareModel.php";
+require_once "./Model/ComentariesModel.php";
+
 
 
 
@@ -16,6 +19,9 @@ class CategoriesController{
         $this->view = new CategoriesView();
         $this->model = new CategoriesModel();
         $this->userModel = new UserModel();
+        $this->spareModel = new SpareModel();
+        $this->comentariesModel = new ComentariesModel();
+        
     }
 
     private function checkLoggedIn(){
@@ -79,27 +85,29 @@ class CategoriesController{
         $this->Categories();
     }
     
-    function DeleteCategorie(){
-        $categorie_name = $_POST['input_categorie'];
-        if ($categorie_name != ''){
-            $categorie_id = $this->model->getCategorieId($categorie_name);
-            if (isset($categorie_id)){
-                $this->model->deleteCategorie($categorie_name);
+    function DeleteCategorie($params = null){
+        $id_categorie = $params[':ID'];
+        $sparesByIdCategorie = $this->spareModel->getSparesByIdCategorie($id_categorie);
+        if (isset($sparesByIdCategorie)){
+            foreach ($sparesByIdCategorie as $spare) {
+                $this->spareModel->deleteSpareById($spare->id); 
+                $this->comentariesModel->deleteCommentaryBySpareId($spare->id);
             }
+            $this->model->deleteCategorie($id_categorie);
+            
+        }    
         $this->Categories();
-        }
+        
     }  
     
-    function ModifyCategorie(){
-        $categorie_name = $_POST['input_categorie'];
+    function ModifyCategorie($params = null){
+        $categorie_id = $params[':ID'];
         $new_name = $_POST['input_new_name'];
-        if ($categorie_name != ''){
-            $categorie_id = $this->model->getCategorieId($categorie_name);
-            if (isset($categorie_id)){
-                $this->model->modifyCategorie($categorie_name, $new_name);
-            }
-        $this->Categories();
+        
+        if ($new_name != ''){
+            $this->model->modifyCategorie($new_name, $categorie_id);
         }
+        $this->Categories();
     }
     
 }

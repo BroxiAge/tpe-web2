@@ -40,7 +40,7 @@
     
     {if $user->rol eq 1}
         <form action="edit" method ="POST" enctype="multipart/form-data">
-            <span>Agregar o modificar repuesto</span>
+            <h4>Agregar repuesto</h4>
             <label for="input_name">Pieza:</label>
             <input type="text" name="input_name">
             <label for="input_vehicle">Vehiculo:</label>

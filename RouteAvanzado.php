@@ -22,14 +22,15 @@
     
     $r->addRoute("edit", "POST", "SpareController", "EditSpare"); 
     $r->addRoute("delete/:ID", "GET", "SpareController", "DeleteSpare"); 
+    $r->addRoute("editar/:ID", "POST", "SpareController", "EditarSpare");
 
 
 
     $r->addRoute("categories", "GET", "CategoriesController", "Categories");
     $r->addRoute("categories/:ID", "GET", "CategoriesController", "FilterByCategorie");
     $r->addRoute("addCategorie", "POST", "CategoriesController", "AddCategorie");
-    $r->addRoute("deleteCategorie", "POST", "CategoriesController", "DeleteCategorie");
-    $r->addRoute("modifyCategorie", "POST", "CategoriesController", "ModifyCategorie");
+    $r->addRoute("deleteCategorie/:ID", "GET", "CategoriesController", "DeleteCategorie");
+    $r->addRoute("modifyCategorie/:ID", "POST", "CategoriesController", "ModifyCategorie");
     
     $r->addRoute("verifyUser", "POST", "UserController", "VerifyUser");
     $r->addRoute("registerUser", "POST", "UserController", "RegisterUser");

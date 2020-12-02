@@ -8,7 +8,7 @@
             <input type="text" name ="input_user">
 
             <label for="pass">Password</label>
-            <input type="text" name="input_pass">
+            <input type="password" name="input_pass">
 
             <button type="submit">Ingresar</button>
 
@@ -22,7 +22,7 @@
             <input type="text" name ="input_register_user">
 
             <label for="pass">Password</label>
-            <input type="text" name="input_register_pass">
+            <input type="password" name="input_register_pass">
 
             
 
